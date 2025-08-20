@@ -1,0 +1,129 @@
+{
+    "uuid": "dde93674-4125-4b30-a10b-45f991c69d21",
+    "lastMigration": 33,
+    "name": "Test1",
+    "endpointPrefix": "",
+    "latency": 0,
+    "port": 3000,
+    "hostname": "",
+    "folders": [],
+    "routes": [
+        {
+            "uuid": "86011589-6570-4ebd-a3c3-83ca52171087",
+            "type": "http",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "transactions",
+            "responses": [
+                {
+                    "uuid": "aa2bcd84-5898-4922-bb48-ffab131ac881",
+                    "body": "{\r\n  \"transaction_id\": \"TXN-{{faker 'string.uuid'}}\",\r\n  \"timestamp\": \"{{now format='YYYY-MM-DDTHH:mm:ss.SSS'}}\",\r\n  \"customer_id\": {{faker 'number.int' min=1000 max=9999}},\r\n  \"product_details\": [\r\n    {\r\n      \"product_id\": \"PROD-{{faker 'number.int' min=100 max=999}}\",\r\n      \"product_name\": \"{{faker 'commerce.productName'}}\",\r\n      \"quantity\": {{faker 'number.int' min=1 max=5}},\r\n      \"price\": \"{{faker 'commerce.price' dec=2}}\"\r\n    }\r\n  ],\r\n  \"total_amount\": \"{{faker 'finance.amount' dec=2}}\",\r\n  \"currency\": \"USD\",\r\n  \"payment_method\": \"{{oneOf (array 'Credit Card' 'PayPal' 'Debit Card')}}\",\r\n  \"shipping_address\": {\r\n    \"street\": \"{{faker 'location.streetAddress'}}\",\r\n    \"city\": \"{{faker 'location.city'}}\",\r\n    \"state\": \"{{faker 'location.state' abbr=true}}\",\r\n    \"zip_code\": \"{{faker 'location.zipCode'}}\",\r\n    \"country\": \"USA\"\r\n  },\r\n  \"status\": \"{{oneOf (array 'Shipped' 'Processing' 'Delivered' 'Cancelled')}}\"\r\n}",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true,
+                    "crudKey": "id",
+                    "callbacks": []
+                }
+            ],
+            "responseMode": null,
+            "streamingMode": null,
+            "streamingInterval": 0
+        },
+        {
+            "uuid": "9c417dbf-7529-48cf-aed5-f394fc87949d",
+            "type": "http",
+            "documentation": "",
+            "method": "get",
+            "endpoint": "",
+            "responses": [
+                {
+                    "uuid": "2ed97f1e-8cc0-48c7-918f-6307aff11a6e",
+                    "body": "{\"message\":\"the API is working.....\"}",
+                    "latency": 0,
+                    "statusCode": 200,
+                    "label": "",
+                    "headers": [],
+                    "bodyType": "INLINE",
+                    "filePath": "",
+                    "databucketID": "",
+                    "sendFileAsBody": false,
+                    "rules": [],
+                    "rulesOperator": "OR",
+                    "disableTemplating": false,
+                    "fallbackTo404": false,
+                    "default": true,
+                    "crudKey": "id",
+                    "callbacks": []
+                }
+            ],
+            "responseMode": null,
+            "streamingMode": null,
+            "streamingInterval": 0
+        }
+    ],
+    "rootChildren": [
+        {
+            "type": "route",
+            "uuid": "86011589-6570-4ebd-a3c3-83ca52171087"
+        },
+        {
+            "type": "route",
+            "uuid": "9c417dbf-7529-48cf-aed5-f394fc87949d"
+        }
+    ],
+    "proxyMode": false,
+    "proxyHost": "",
+    "proxyRemovePrefix": false,
+    "tlsOptions": {
+        "enabled": false,
+        "type": "CERT",
+        "pfxPath": "",
+        "certPath": "",
+        "keyPath": "",
+        "caPath": "",
+        "passphrase": ""
+    },
+    "cors": true,
+    "headers": [
+        {
+            "key": "Content-Type",
+            "value": "application/json"
+        },
+        {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+        },
+        {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+        },
+        {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+        }
+    ],
+    "proxyReqHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "proxyResHeaders": [
+        {
+            "key": "",
+            "value": ""
+        }
+    ],
+    "data": [],
+    "callbacks": []
+}

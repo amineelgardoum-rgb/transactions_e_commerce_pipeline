@@ -1,0 +1,26 @@
+# .dockerignore
+
+# Git files
+
+
+# Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+*.egg-info/
+
+# Node.js files
+node_modules/
+npm-debug.log
+
+# VS Code files
+.vscode/
+
+# IDE files
+.idea/
+.dockerignore
+.env

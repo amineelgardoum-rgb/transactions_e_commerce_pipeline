@@ -1,0 +1,77 @@
+/* style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    display: flex;
+    /* Use flexbox on the body for easy centering */
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f2f5;
+}
+
+h1 {
+    text-align: center;
+    padding: 1.5rem;
+    color: #333;
+}
+
+/* Make sure your HTML uses this ID for the button */
+#resetchartdata {
+    padding: 12px 24px;
+    /* Slightly adjusted padding */
+    border-radius: 8px;
+    /* Consistent with chart containers */
+    border: 1px solid #ccc;
+    margin-bottom: 2rem;
+    /* Give it space from the charts below */
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #555;
+    /* The transition property correctly defines the animation */
+    transition: all 0.2s ease-in-out;
+}
+
+/* The corrected hover effect */
+#resetchartdata:hover {
+    /* Only define the NEW values here. The transition handles the animation. */
+    background-color: #e9ecef;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    /* Make the shadow a bit stronger */
+    transform: translateY(-2px);
+    /* Add a slight "lift" effect */
+}
+
+/* This wrapper will arrange the chart containers */
+.charts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align to top in case charts have different heights */
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 1rem;
+    /* Add some padding on the sides */
+}
+
+/* Your chart container style is excellent, no changes needed */
+.chart-container {
+    position: relative;
+    /* Required by Chart.js */
+    height: 400px;
+    width: 500px;
+    max-width: 100%;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

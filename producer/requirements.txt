@@ -1,0 +1,6 @@
+sse_starlette
+aiokafka
+asyncio
+fastapi
+faker
+uvicorn
