@@ -87,7 +87,7 @@ The producers are exposed via FastAPI. You can use the interactive API documenta
   2. Every time you click "Execute", a new transaction is sent to the `transactions-topic` Kafka topic.
 - **Source 2 (Mockoon Data):**
 
-  1. Open [http://localhost:8001/transactions](http://localhost:8001/transactions) in your browser.
+  1. Open [http://localhost:3001/transactions](http://localhost:3001/transactions) in your browser.
   2. This service will fetch data from the Mockoon API and send it to the `transactions_topic` Kafka topic.
 
 > **What's Happening?**
@@ -131,7 +131,7 @@ You can connect to the MongoDB instance to verify that the data has been saved.
 
 ### 5. View the Frontend Dashboard
 
-Open [http://localhost:8080](http://localhost:8080) in your browser to see the data visualization.
+Open [http://localhost:5173](http://localhost:5173) in your browser to see the data visualization.
 
 ### 6. Stop the Services
 
