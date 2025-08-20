@@ -85,7 +85,7 @@ docker-compose -f docker-compose.project.yml ps
   2. Every time you click "Execute", a new transaction is sent to the `transactions-topic` Kafka topic.
 - **Source 2 (Mockoon Data):**
 
-  1. Open [http://localhost:3001/transactions](http://localhost:3001/transactions) in your browser.
+  1. Open [http://localhost:8001/transactions](http://localhost:3001/transactions) in your browser.
   2. This service will fetch data from the Mockoon API and send it to the `transactions_topic` Kafka topic.
 
 > **What's Happening?**
