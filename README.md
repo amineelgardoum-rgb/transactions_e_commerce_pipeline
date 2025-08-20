@@ -94,8 +94,7 @@ The entire infrastructure can be launched with a single command thanks to Docker
      - **Source 1 (Faker):** [http://localhost:8000/docs](http://localhost:8000/docs)
      - **Source 2 (Mockoon):** [http://localhost:8001/docs](http://localhost:8001/docs)
       
-**4.Check the data in MongoDB**
-
+**4.Check the data in MongoDB**:
       You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
 4. 1. **Enter the MongoDB shell:**
       ```bash
