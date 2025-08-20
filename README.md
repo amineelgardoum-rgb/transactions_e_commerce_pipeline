@@ -6,36 +6,34 @@ This project demonstrates a complete, end-to-end real-time data pipeline designe
 
 The entire system is designed with decoupled services, making it scalable and resilient.
 
-_To ensure the image displays correctly on all platforms (like your portfolio website), this `README` uses the absolute URL to the image file in the repository._
-
 ![Project Architecture Diagram](./archi/archi.png)
 
 ---
 
 ## ✨ Features
 
--   **Real-Time Data Streaming:** Utilizes Apache Kafka as a high-throughput, distributed message broker.
--   **Multiple Data Sources:** Ingests data from two independent sources:
-    -   A **Faker**-based generator for producing realistic, mocked JSON data (`producer` service).
-    -   A **Mockoon** API simulator, mimicking a real-world third-party API (`producer-mockoon` service).
--   **Decoupled Services:** Each component (producer, consumer) runs as a separate service, communicating only through the Kafka message bus.
--   **FastAPI Producers:** Python-based Kafka producers are exposed via high-performance FastAPI endpoints.
--   **Persistent Storage:** A Kafka consumer subscribes to the data stream and saves all incoming transactions to a **MongoDB** database.
--   **Data Visualization:** Includes a **Chart.js** dashboard (`users_transactions_over_time` service) to demonstrate front-end consumption of the data.
--   **Containerized Environment:** The entire stack is managed with Docker and Docker Compose for easy, one-command setup.
+- **Real-Time Data Streaming:** Utilizes Apache Kafka as a high-throughput, distributed message broker.
+- **Multiple Data Sources:** Ingests data from two independent sources:
+  - A **Faker**-based generator for producing realistic, mocked JSON data (`producer` service).
+  - A **Mockoon** API simulator, mimicking a real-world third-party API (`producer-mockoon` service).
+- **Decoupled Services:** Each component (producer, consumer) runs as a separate service, communicating only through the Kafka message bus.
+- **FastAPI Producers:** Python-based Kafka producers are exposed via high-performance FastAPI endpoints.
+- **Persistent Storage:** A Kafka consumer subscribes to the data stream and saves all incoming transactions to a **MongoDB** database.
+- **Data Visualization:** Includes a **Chart.js** dashboard (`users_transactions_over_time` service) to demonstrate front-end consumption of the data.
+- **Containerized Environment:** The entire stack is managed with Docker and Docker Compose for easy, one-command setup.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component            | Technology                                                                                                                                                                                                                                                                |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Component                    | Technology                                                                                                                                                                                                                                                |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Data Streaming**     | ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white) ![Apache ZooKeeper](https://img.shields.io/badge/Apache%20ZooKeeper-F39217?style=for-the-badge&logo=apachezookeeper&logoColor=white) |
-| **Database**         | ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)                                                                                                                                                                 |
-| **Backend / Services** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)                                                          |
-| **Mocking / Data Gen**   | ![Faker](https://img.shields.io/badge/Faker-D22572?style=for-the-badge) ![Mockoon](https://img.shields.io/badge/Mockoon-2563EB?style=for-the-badge&logo=mockoon&logoColor=white)                                                                                         |
-| **Frontend**         | ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)                                                                                                                                                             |
-| **Containerization**   | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)                                                                                                                                                                   |
+| **Database**           | ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)                                                                                                                                                    |
+| **Backend / Services** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)                                                |
+| **Mocking / Data Gen** | ![Faker](https://img.shields.io/badge/Faker-D22572?style=for-the-badge) ![Mockoon](https://img.shields.io/badge/Mockoon-2563EB?style=for-the-badge&logo=mockoon&logoColor=white)                                                                              |
+| **Frontend**           | ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)                                                                                                                                               |
+| **Containerization**   | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)                                                                                                                                                       |
 
 ---
 
@@ -45,17 +43,17 @@ Follow these instructions to get the project up and running on your local machin
 
 ### Prerequisites
 
--   [Git](https://git-scm.com/)
--   [Docker](https://www.docker.com/products/docker-desktop/)
--   [Docker Compose](https://docs.docker.com/compose/) (usually included with Docker Desktop)
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Docker Compose](https://docs.docker.com/compose/) (usually included with Docker Desktop)
 
 ### Installation & Setup
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/amineel-crypto/transactions_e_commerce_pipeline.git
-    cd transactions_e_commerce_pipeline
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/amineelgardoum-rgb/transactions_e_commerce_pipeline.git
+   cd transactions_e_commerce_pipeline
+   ```
 
 ---
 
@@ -63,66 +61,74 @@ Follow these instructions to get the project up and running on your local machin
 
 The entire infrastructure can be launched with a single command thanks to Docker Compose.
 
-1.  **Start all services:**
-    Run this command from the root of the project directory. The `-f` flag specifies the correct compose file, and `--build -d` will build the images if they don't exist and run the containers in detached mode.
-    ```bash
-    docker-compose -f docker-compose.project.yml up --build -d
-    ```
-    This will start:
-    -   Kafka and ZooKeeper
-    -   MongoDB
-    -   Two FastAPI producer services
-    -   The Kafka consumer service
+1. **Start all services:**
+   Run this command from the root of the project directory. The `-f` flag specifies the correct compose file, and `--build -d` will build the images if they don't exist and run the containers in detached mode.
 
-2.  **Verify the services are running:**
-    To check the status of all containers:
-    ```bash
-    docker-compose -f docker-compose.project.yml ps
-    ```
-    To view the real-time logs from all services:
-    ```bash
-    docker-compose -f docker-compose.project.yml logs -f
-    ```    Press `Ctrl + C` to exit the logs.
+   ```bash
+   docker-compose -f docker-compose.project.yml up --build -d
+   ```
 
-3.  **Interact with the APIs:**
-    -   **API Docs:**
-        -   **Source 1 (Faker):** [http://localhost:8000/docs](http://localhost:8000/docs)
-        -   **Source 2 (Mockoon):** [http://localhost:8001/docs](http://localhost:8001/docs)
-    -   **Sending Data:**
-        -   Use the docs to send a `POST` request to `/real_time_response` on the first API.
-        -   Use the docs to send a `POST` request to `/transactions` on the second API.
+   This will start:
 
-4.  **Check the data in MongoDB:**
-    You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
+   - Kafka and ZooKeeper
+   - MongoDB
+   - Two FastAPI producer services
+   - The Kafka consumer service
+2. **Verify the services are running:**
+   To check the status of all containers:
 
-    <br>
+   ```bash
+   docker-compose -f docker-compose.project.yml ps
+   ```
 
-    1.  **Enter the MongoDB shell:**
-        ```bash
-        docker-compose -f docker-compose.project.yml exec mongo mongosh
-        ```
-    2.  **Show databases:**
-        ```bash
-        show dbs
-        ```
-    3.  **Use the correct database:**
-        ```bash
-        use mocked_data
-        ```
-    4.  **View the data:**
-        ```bash
-        db.transactions.find()
-        ```
+   To view the real-time logs from all services:
 
-5.  **Stop the services:**
-    To stop and remove all the running containers:
-    ```bash
-    docker-compose -f docker-compose.project.yml down
-    ```
-    To **also remove the data volumes** (deleting all MongoDB data):
-    ```bash
-    docker-compose -f docker-compose.project.yml down -v
-    ```
+   ```bash
+   docker-compose -f docker-compose.project.yml logs -f
+   ```    Press `Ctrl + C` to exit the logs.
+
+   ```
+3. **Interact with the APIs:**
+
+   - **API Docs:**
+     - **Source 1 (Faker):** [http://localhost:8000/docs](http://localhost:8000/docs)
+     - **Source 2 (Mockoon):** [http://localhost:8001/docs](http://localhost:8001/docs)
+   - **Sending Data:**
+     - Use the docs to send a `POST` request to `/real_time_response` on the first API.
+     - Use the docs to send a `POST` request to `/transactions` on the second API.
+4. **Check the data in MongoDB:**
+   You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
+
+   <br>
+
+   1. **Enter the MongoDB shell:**
+      ```bash
+      docker-compose -f docker-compose.project.yml exec mongo mongosh
+      ```
+   2. **Show databases:**
+      ```bash
+      show dbs
+      ```
+   3. **Use the correct database:**
+      ```bash
+      use mocked_data
+      ```
+   4. **View the data:**
+      ```bash
+      db.transactions.find()
+      ```
+5. **Stop the services:**
+   To stop and remove all the running containers:
+
+   ```bash
+   docker-compose -f docker-compose.project.yml down
+   ```
+
+   To **also remove the data volumes** (deleting all MongoDB data):
+
+   ```bash
+   docker-compose -f docker-compose.project.yml down -v
+   ```
 
 ---
 
