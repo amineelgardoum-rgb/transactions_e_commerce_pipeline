@@ -98,21 +98,26 @@ The entire infrastructure can be launched with a single command thanks to Docker
 </br>
       You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
 4. 1. **Enter the MongoDB shell:**
+</br>
       ```bash
       docker-compose -f docker-compose.project.yml exec mongo mongosh
       ```
    2. **Show databases:**
+</br>
       ```bash
       show dbs
       ```
    3. **Use the correct database:**
+</br>
       ```bash
       use mocked_data
       ```
    4. **View the data:**
+</br>
       ```bash
       db.transactions.find()
       ```
+</br>
 5. **Stop the services:**
    To stop and remove all the running containers:
 
