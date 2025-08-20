@@ -1,15 +1,3 @@
-Of course! This is an excellent project, and a well-structured `README` is key to making it accessible. I've corrected and refactored your file to be clearer, more logically structured, and easier for a new user to follow.
-
-The main changes are:
-
-1. **Improved Flow:** The "Running" section now follows a logical sequence: start services -> generate data -> see the output -> check the database -> stop services.
-2. **Explicit Instructions:** Added a crucial step explaining *how* to actually generate data using the FastAPI docs, which was missing.
-3. **Clarity and Formatting:** Replaced `<br>` tags with proper Markdown formatting, used more consistent code blocks, and improved wording for clarity.
-4. **Added Missing Sections:** Included a "Services Overview" to explain what each container does and a section on how to view the frontend dashboard.
-
-Here is the corrected and improved `README.md` file.
-
----
 
 # Real-Time E-commerce Transaction Pipeline
 
@@ -160,6 +148,52 @@ docker-compose -f docker-compose.project.yml down
 
 # To also remove the data volumes (deleting all MongoDB data):
 docker-compose -f docker-compose.project.yml down -v
+```
+
+=======
+
+```
+3. **Interact with the APIs:**
+
+   - **API Docs:**
+     - **Source 1 (Faker):** [http://localhost:8000/docs](http://localhost:8000/docs)
+     - **Source 2 (Mockoon):** [http://localhost:8001/docs](http://localhost:8001/docs)
+    
+**4.Check the data in MongoDB**:
+</br>
+      You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
+4. 1. **Enter the MongoDB shell:**
+</br>
+      ```bash
+      docker-compose -f docker-compose.project.yml exec mongo mongosh
+      ```
+   2. **Show databases:**
+</br>
+      ```bash
+      show dbs
+      ```
+   3. **Use the correct database:**
+</br>
+      ```bash
+      use mocked_data
+      ```
+   4. **View the data:**
+</br>
+      ```bash
+      db.transactions.find()
+      ```
+</br>
+5. **Stop the services:**
+   To stop and remove all the running containers:
+
+   ```bash
+   docker-compose -f docker-compose.project.yml down
+```
+
+   To **also remove the data volumes** (deleting all MongoDB data):
+
+```bash
+   docker-compose -f docker-compose.project.yml down -v
 ```
 
 ---
