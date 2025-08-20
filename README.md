@@ -79,8 +79,6 @@ docker-compose -f docker-compose.project.yml ps
 
 ### 2. Generate Transaction Data
 
-The producers are exposed via FastAPI. You can use the interactive API documentation (Swagger UI) to send messages to Kafka.
-
 - **Source 1 (Faker Data):**
 
   1. Open [http://localhost:8000/real_time_response](http://localhost:8000/docs) in your browser.
