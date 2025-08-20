@@ -93,11 +93,8 @@ The entire infrastructure can be launched with a single command thanks to Docker
    - **API Docs:**
      - **Source 1 (Faker):** [http://localhost:8000/docs](http://localhost:8000/docs)
      - **Source 2 (Mockoon):** [http://localhost:8001/docs](http://localhost:8001/docs)
-   - **Sending Data:**
-     - Use the docs to send a `POST` request to `/real_time_response` on the first API.
-     - Use the docs to send a `POST` request to `/transactions` on the second API.
-4. **Check the data in MongoDB:**
-   You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
+   - **Check the data in MongoDB:**
+4. You can connect to the MongoDB instance with a GUI client (like MongoDB Compass) or use the Docker container's shell:
 
    <br>
 
