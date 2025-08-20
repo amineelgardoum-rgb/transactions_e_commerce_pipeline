@@ -87,7 +87,7 @@ The producers are exposed via FastAPI. You can use the interactive API documenta
   2. Every time you click "Execute", a new transaction is sent to the `transactions` Kafka topic.
 - **Source 2 (Mockoon Data):**
 
-  1. Open [http://localhost:8001/docs](http://localhost:8001/transactions) in your browser.
+  1. Open [http://localhost:8001/transactions](http://localhost:8001/transactions) in your browser.
   2. This service will fetch data from the Mockoon API and send it to the `transactions_mockoon` Kafka topic.
 
 > **What's Happening?**
