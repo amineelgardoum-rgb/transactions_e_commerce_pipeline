@@ -14,22 +14,22 @@ The entire system is designed with decoupled services, making it scalable and re
 
 ## ✨ Features
 
--   **Real-Time Data Streaming:** Utilizes Apache Kafka as a high-throughput, distributed message broker.
--   **Multiple Data Sources:** Ingests data from two independent sources:
-    -   A **Faker**-based generator for producing realistic, mocked JSON data (`producer` service).
-    -   A **Mockoon** API simulator, mimicking a real-world third-party API (`producer-mockoon` service).
--   **Decoupled Services:** Each component (producer, consumer) runs as a separate service, communicating only through the Kafka message bus.
--   **High-Performance Producers:** Kafka producers are exposed via Python **FastAPI** endpoints, which include interactive documentation.
--   **Persistent Storage:** A dedicated Kafka consumer subscribes to the data stream and saves all incoming transactions to a **MongoDB** database.
--   **Data Visualization:** Includes a **Chart.js** dashboard (`users_transactions_over_time` service) to demonstrate front-end consumption of the data.
--   **Containerized Environment:** The entire stack is managed with **Docker** and **Docker Compose** for a simple, one-command setup.
+- **Real-Time Data Streaming:** Utilizes Apache Kafka as a high-throughput, distributed message broker.
+- **Multiple Data Sources:** Ingests data from two independent sources:
+  - A **Faker**-based generator for producing realistic, mocked JSON data (`producer` service).
+  - A **Mockoon** API simulator, mimicking a real-world third-party API (`producer-mockoon` service).
+- **Decoupled Services:** Each component (producer, consumer) runs as a separate service, communicating only through the Kafka message bus.
+- **High-Performance Producers:** Kafka producers are exposed via Python **FastAPI** endpoints, which include interactive documentation.
+- **Persistent Storage:** A dedicated Kafka consumer subscribes to the data stream and saves all incoming transactions to a **MongoDB** database.
+- **Data Visualization:** Includes a **Chart.js** dashboard (`users_transactions_over_time` service) to demonstrate front-end consumption of the data.
+- **Containerized Environment:** The entire stack is managed with **Docker** and **Docker Compose** for a simple, one-command setup.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component              | Technology                                                                                                                                                                                                                                                |
-| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Component                    | Technology                                                                                                                                                                                                                                                |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Data Streaming**     | ![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white) ![Apache ZooKeeper](https://img.shields.io/badge/Apache%20ZooKeeper-F39217?style=for-the-badge&logo=apachezookeeper&logoColor=white) |
 | **Database**           | ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)                                                                                                                                                    |
 | **Backend / Services** | ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)                                                |
@@ -45,17 +45,17 @@ Follow these instructions to get the project up and running on your local machin
 
 ### Prerequisites
 
--   [Git](https://git-scm.com/)
--   [Docker](https://www.docker.com/products/docker-desktop/)
--   [Docker Compose](https://docs.docker.com/compose/) (included with Docker Desktop)
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/products/docker-desktop/)
+- [Docker Compose](https://docs.docker.com/compose/) (included with Docker Desktop)
 
 ### Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/amineelgardoum-rgb/transactions_e_commerce_pipeline.git
-    cd transactions_e_commerce_pipeline
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/amineelgardoum-rgb/transactions_e_commerce_pipeline.git
+   cd transactions_e_commerce_pipeline
+   ```
 
 ---
 
@@ -81,17 +81,14 @@ docker-compose -f docker-compose.project.yml ps
 
 The producers are exposed via FastAPI. You can use the interactive API documentation (Swagger UI) to send messages to Kafka.
 
--   **Source 1 (Faker Data):**
-    1.  Open [http://localhost:8000/docs](http://localhost:8000/docs) in your browser.
-    2.  Click on the `GET /producer/transactions` endpoint.
-    3.  Click **"Try it out"**, then **"Execute"**.
-    4.  Every time you click "Execute", a new transaction is sent to the `transactions` Kafka topic.
+- **Source 1 (Faker Data):**
 
--   **Source 2 (Mockoon Data):**
-    1.  Open [http://localhost:8001/docs](http://localhost:8001/docs) in your browser.
-    2.  Click on the `GET /producer/transactions` endpoint.
-    3.  Click **"Try it out"**, then **"Execute"**.
-    4.  This service will fetch data from the Mockoon API and send it to the `transactions_mockoon` Kafka topic.
+  1. Open [http://localhost:8000/real_time_response](http://localhost:8000/docs) in your browser.
+  2. Every time you click "Execute", a new transaction is sent to the `transactions` Kafka topic.
+- **Source 2 (Mockoon Data):**
+
+  1. Open [http://localhost:8001/docs](http://localhost:8001/transactions) in your browser.
+  2. This service will fetch data from the Mockoon API and send it to the `transactions_mockoon` Kafka topic.
 
 > **What's Happening?**
 > When you click "Execute", the FastAPI service sends a message to a Kafka topic. The `consumer` service is listening to these topics, and upon receiving a message, it immediately writes the data into MongoDB.
@@ -114,22 +111,23 @@ Press `Ctrl + C` to exit the logs.
 
 You can connect to the MongoDB instance to verify that the data has been saved.
 
-1.  **Enter the MongoDB shell:**
-    ```bash
-    docker-compose -f docker-compose.project.yml exec mongo mongosh
-    ```
+1. **Enter the MongoDB shell:**
 
-2.  **Inside the `mongosh` shell, run these commands:**
-    ```javascript
-    // Show all available databases
-    show dbs;
+   ```bash
+   docker-compose -f docker-compose.project.yml exec mongo mongosh
+   ```
+2. **Inside the `mongosh` shell, run these commands:**
 
-    // Switch to the database used by the consumer
-    use mocked_data;
+   ```javascript
+   // Show all available databases
+   show dbs;
 
-    // View the data in the transactions collection
-    db.transactions.find().pretty();
-    ```
+   // Switch to the database used by the consumer
+   use mocked_data;
+
+   // View the data in the transactions collection
+   db.transactions.find().pretty();
+   ```
 
 ### 5. View the Frontend Dashboard
 
