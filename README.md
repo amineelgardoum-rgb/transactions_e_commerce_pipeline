@@ -82,11 +82,9 @@ docker-compose -f docker-compose.project.yml ps
 - **Source 1 (Faker Data):**
 
   1. Open [http://localhost:8000/real_time_response](http://localhost:8000/docs) in your browser.
-  2. Every time you click "Execute", a new transaction is sent to the `transactions-topic` Kafka topic.
 - **Source 2 (Mockoon Data):**
 
   1. Open [http://localhost:8001/transactions](http://localhost:3001/transactions) in your browser.
-  2. This service will fetch data from the Mockoon API and send it to the `transactions_topic` Kafka topic.
 
 > **What's Happening?**
 > When you click "Execute", the FastAPI service sends a message to a Kafka topic. The `consumer` service is listening to these topics, and upon receiving a message, it immediately writes the data into MongoDB.
